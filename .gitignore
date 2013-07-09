@@ -1,4 +1,5 @@
 /.idea
+/LESS_CACHE
 .DS_Store
 *.pyc
 *.iml
