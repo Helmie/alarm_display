@@ -130,6 +130,7 @@ INSTALLED_APPS = (
     'bootstrap_toolkit',
     'model',
     'ui',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging
