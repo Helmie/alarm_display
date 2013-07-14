@@ -4,4 +4,5 @@ cd $(dirname $0)/..
 
 set -e
 
+sudo pip install -q Django
 sudo pip install -r requirements.txt

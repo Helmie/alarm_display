@@ -1,4 +1,3 @@
-django
 django-bootstrap-toolkit
 django-less
 fuzzywuzzy
