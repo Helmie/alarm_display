@@ -1,0 +1,33 @@
+#!/bin/sh
+
+cd $(dirname $0)/..
+
+set -e
+
+missing() {
+    command -v $1 >/dev/null 2>&1
+    [ $? -ne 0 ] && return 0 || return 1
+}
+
+if [ $(missing brew) ]; then
+    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+fi
+
+brew update
+
+if [ $(missing tesseract) ]; then
+    brew install tesseract
+fi
+
+if [ $(missing npm) ]; then
+    brew install nodejs
+fi
+
+if [ $(missing lessc) ]; then
+    npm install -g less
+fi
+
+app/setup
+
+python manage.py syncdb
+python manage.py migrate
