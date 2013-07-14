@@ -7,7 +7,6 @@ env:
     - DJANGO=1.4.1
     - DJANGO=1.4.2
     - DJANGO=1.4.3
-    - DJANGO=1.4.4
     - DJANGO=1.4.5
     - DJANGO=1.5
     - DJANGO=1.5.1
