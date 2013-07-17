@@ -22,7 +22,7 @@ keys = [
     "Telefon"
 ]
 
-def run(filename):
+def run(filename, debug=False):
     content = pytesser.image_file_to_string(filename)
     minimum_ratio = 75
 
@@ -44,6 +44,10 @@ def run(filename):
     dictionary = {}
 
     content = unicode(content, 'utf-8')
+
+    if debug:
+        print content
+
     lines = content.splitlines()
     alarm = find_alarm(lines)
 
