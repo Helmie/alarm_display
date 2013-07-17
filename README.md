@@ -1,4 +1,4 @@
-# ![Fire Engine](https://raw.github.com/whiskeysierra/alarm-display/master/icon.png) Alarm Display [![Build Status](https://travis-ci.org/whiskeysierra/alarm-display.png)](http://travis-ci.org/whiskeysierra/alarm-display)
+# ![Fire Engine](icon.png) Alarm Display [![Build Status](https://travis-ci.org/whiskeysierra/alarm-display.png?branch=master,develop)](http://travis-ci.org/whiskeysierra/alarm-display)
 
 ## Runtime Requirements
 
