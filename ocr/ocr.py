@@ -46,7 +46,6 @@ def run(filename):
             for key in keys:
                 match = find_match(line, key)
                 if match is not None:
-                    print key + ':',
                     rest = line.replace(match, '').strip()
                     rest = re.sub(r'^[.:]?', '', rest).strip()
                     dictionary[key] = rest
