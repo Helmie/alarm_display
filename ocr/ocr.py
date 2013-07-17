@@ -23,10 +23,11 @@ def run(filename):
         return None
 
     dictionary = {}
+
     content = unicode(content, 'utf-8')
     lines = content.splitlines()
     alarm = find_alarm(lines)
-    print alarm
+
     if alarm is not None:
         i = content.index(alarm)
         content = content[i:]
