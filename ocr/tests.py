@@ -34,4 +34,4 @@ class OcrTest(TestCase):
             with open('%s.json' % name) as f:
                 expected = json.load(f)
             actual = ocr.run(resource)
-            self.assertEqual(expected, actual)
+            self.assertEqual(actual, expected)

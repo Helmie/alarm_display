@@ -1,7 +1,26 @@
+from __future__ import unicode_literals
+
 import fuzzy
 import re
 import pytesser
 
+keys = [
+    "Einsatzstichwort",
+    "Sachverhalt",
+    "Sondersignal",
+    "Einsatzbeginn(Soll)",
+    "Auftragsnummer",
+    "Objekttyp",
+    "Objekt",
+    "Strasse / Hausnummer",
+    "Strasse",
+    "Zusatz Strasse",
+    "Segment",
+    "PLZ / Ort",
+    "Stadt", "Region",
+    "Info",
+    "Telefon"
+]
 
 def run(filename):
     content = pytesser.image_file_to_string(filename)
@@ -33,15 +52,8 @@ def run(filename):
         content = content[i:]
 
         for line in content.splitlines():
-            if line.strip() == '':
+            if not line.strip():
                 continue
-
-            keys = ["Einsatzstichwort", "Sachverhalt", "Sondersignal", "Einsatzbeginn(Soll)", "Auftragsnummer",
-                    "Objekttyp",
-                    "Objekt",
-                    "Strasse / Hausnummer", "Strasse", "Zusatz Strasse", "Segment", "PLZ / Ort", "Stadt", "Region",
-                    "Info",
-                    "Telefon"]
 
             for key in keys:
                 match = find_match(line, key)
