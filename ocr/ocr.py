@@ -13,8 +13,8 @@ keys = [
     "Objekttyp",
     "Objekt",
     "Strasse / Hausnummer",
-    "Strasse",
     "Zusatz Strasse",
+    "Strasse",
     "Segment",
     "PLZ / Ort",
     "Stadt", "Region",
@@ -24,7 +24,7 @@ keys = [
 
 def run(filename):
     content = pytesser.image_file_to_string(filename)
-    minimum_ratio = 80
+    minimum_ratio = 75
 
     def find_match(line, word):
         ratio, word = fuzzy.partial(line, word)

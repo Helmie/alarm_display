@@ -26,12 +26,16 @@ class FuzzyTest(TestCase):
 class OcrTest(TestCase):
     maxDiff = None
 
-    def test_run(self):
-        directory = os.path.dirname(os.path.realpath(__file__))
-        resources = os.path.join(directory, 'resources')
-        for resource in glob(os.path.join(resources, '*.tiff')):
-            name, ext = os.path.splitext(resource)
-            with open('%s.json' % name) as f:
-                expected = json.load(f)
-            actual = ocr.run(resource)
-            self.assertEqual(actual, expected)
+# generate a test per resource
+directory = os.path.dirname(os.path.realpath(__file__))
+resources = os.path.join(directory, 'resources')
+for index, resource in enumerate(glob(os.path.join(resources, '*.tiff'))):
+    name, ext = os.path.splitext(resource)
+    with open('%s.json' % name) as f:
+        expected = json.load(f)
+    actual = ocr.run(resource)
+
+    def test(self):
+        self.assertEqual(actual, expected)
+
+    setattr(OcrTest, 'test_%d' % index, test)
