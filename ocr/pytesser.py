@@ -61,7 +61,7 @@ def call_tesseract(input_filename, output_filename):
     env['TESSDATA_PREFIX'] = os.path.dirname(os.path.realpath(__file__)) + os.path.sep
 
     with open('/dev/null', 'w') as null:
-        proc = subprocess.Popen(args, env=env, stderr=null)
+        proc = subprocess.Popen(args, env=env, stdout=null, stderr=null)
     retcode = proc.wait()
     if retcode != 0:
         check_for_errors()
