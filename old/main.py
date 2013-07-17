@@ -1,8 +1,7 @@
 import fs
-import ocr
 import repeat
 
-__author__ = 'Christopher'
+from ocr import ocr
 
 
 def task():

@@ -3,7 +3,7 @@ import subprocess
 
 from PIL import Image
 
-tesseract_exe_name = '/usr/local/bin/tesseract'
+tesseract_exe_name = 'tesseract'
 scratch_image_name = "temp.bmp"
 scratch_text_name_root = "temp"
 cleanup_scratch_flag = True
@@ -57,8 +57,11 @@ def call_tesseract(input_filename, output_filename):
     outputting output_filename+'txt'
     """
     args = [tesseract_exe_name, input_filename, output_filename, '-l', 'deu']
-    tessdata_parent = os.path.dirname(os.path.realpath(__file__))
-    proc = subprocess.Popen(args, env={'TESSDATA_PREFIX': tessdata_parent})
+    env = os.environ.copy()
+    env['TESSDATA_PREFIX'] = os.path.dirname(os.path.realpath(__file__)) + os.path.sep
+
+    with open('/dev/null', 'w') as null:
+        proc = subprocess.Popen(args, env=env, stderr=null)
     retcode = proc.wait()
     if retcode != 0:
         check_for_errors()
