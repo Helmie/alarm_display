@@ -13,6 +13,8 @@ env:
 install:
     - pip install -r requirements.txt --use-mirrors
     - pip install -q Django==$DJANGO --use-mirrors
+    - sudo apt-get update -qq
+    - sudo apt-get install -qq tesseract-ocr
 script: python manage.py test
 notifications:
     email:
