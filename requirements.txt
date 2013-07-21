@@ -1,0 +1,5 @@
+django-bootstrap-toolkit
+django-less
+fuzzywuzzy
+PIL
+South

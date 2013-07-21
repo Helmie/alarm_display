@@ -4,13 +4,5 @@ cd $(dirname $0)/..
 
 set -e
 
-sudo pip install django
-sudo pip install django-bootstrap-toolkit
-sudo pip install django-less
-sudo pip install South
-
-python manage.py syncdb
-python manage.py migrate
-
-# TODO install nodejs
-# TODO install lessc
+sudo pip install -q Django
+sudo pip install -r requirements.txt
