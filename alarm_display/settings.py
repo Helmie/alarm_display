@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'bootstrap_toolkit',
     'south',
     # custom
+    'fs',
     'model',
     'ocr',
     'ui',
