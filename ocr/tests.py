@@ -5,9 +5,9 @@ when you run "manage.py test".
 
 Replace this with more appropriate tests for your application.
 """
-import json
 import ocr
 import os
+import yaml
 
 from django.test import TestCase
 from glob import glob
@@ -31,7 +31,7 @@ class OcrTest(TestCase):
         files = glob(os.path.join(resources, '*.tiff'))
         for resource in files:
             name, ext = os.path.splitext(resource)
-            with open('%s.json' % name) as f:
-                expected = json.load(f)
+            with open('%s.yml' % name, 'r') as f:
+                expected = yaml.load(f)
             actual = ocr.run(resource)
             self.assertEqual(expected, actual)
