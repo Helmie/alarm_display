@@ -11,7 +11,6 @@ import os
 
 from django.test import TestCase
 from glob import glob
-from ocr import fuzzy
 
 
 class FuzzyTest(TestCase):
@@ -19,7 +18,7 @@ class FuzzyTest(TestCase):
         """
         Tests that partial finds best matches
         """
-        ratio, word = fuzzy.partial('Sachverhalt:  Suterent Lichtschacht läuft voll.', 'Sachverhalt')
+        ratio, word = ocr.fuzzy.partial('Sachverhalt:  Suterent Lichtschacht läuft voll.', 'Sachverhalt')
         self.assertEqual(word, "Sachverhalt")
 
 
