@@ -22,6 +22,7 @@ keys = [
     "Telefon"
 ]
 
+
 def run(filename, debug=False):
     content = pytesser.image_file_to_string(filename)
     minimum_ratio = 75
