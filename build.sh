@@ -3,4 +3,4 @@
 set -e
 
 python manage.py test
-py.test */test_*.py
+py.test */test_*.py -vv
