@@ -28,42 +28,36 @@ def run(filename, debug=False):
     minimum_ratio = 75
 
     def find_match(line, word):
-        ratio, word = fuzzy.partial(line, word)
+        ratio, word, start, end = fuzzy.partial(line, word)
 
         if ratio >= minimum_ratio:
-            return word
+            return word, start, end
 
-        return None
-
-    def find_alarm(lines):
-        for line in lines:
-            match = find_match(line, 'ALARMDEPESCHE')
-            if match is not None:
-                return match
-        return None
+        return None, None, None
 
     dictionary = {}
 
     content = unicode(content, 'utf-8')
 
-    if debug:
-        print content
-
-    lines = content.splitlines()
-    alarm = find_alarm(lines)
+    alarm, _, end = find_match(content, 'ALARMDEPESCHE')
 
     if alarm is not None:
-        i = content.index(alarm)
-        content = content[i:]
+        content = content[end:]
+
+        engines, start, _ = find_match(content, 'Einsatzmittelliste')
+        content = content[:start]
+
+        if debug:
+            print content
 
         for line in content.splitlines():
             if not line.strip():
                 continue
 
             for key in keys:
-                match = find_match(line, key)
+                match, start, end = find_match(line, key)
                 if match is not None:
-                    rest = line.replace(match, '').strip()
+                    rest = line[end:].strip()
                     rest = re.sub(r'^[.:]?', '', rest).strip()
                     dictionary[key] = rest
                     break

@@ -30,6 +30,7 @@ def partial(s1, s2):
     #   block = (1,3,3)
     #   best score === ratio("abcd", "Xbcd")
     scores = []
+    print blocks
     for block in blocks:
         long_start = block[1] - block[0] if (block[1] - block[0]) > 0 else 0
         long_end = long_start + len(shorter)
@@ -38,10 +39,11 @@ def partial(s1, s2):
         m2 = SequenceMatcher(None, shorter, long_substr)
         r = m2.ratio()
         if r > .995:
-            return 100, long_substr
+            return 100, long_substr, long_start, long_end
         else:
-            scores.append((r, long_substr))
+            scores.append((r, long_substr, long_start, long_end))
 
-    ratio, word = max(scores, key=lambda (r, w): r)
+    print scores
+    ratio, word, start, end = max(scores, key=lambda (r, w, s, e): r)
     ratio = int(100 * ratio)
-    return ratio, word
+    return ratio, word, start, end
