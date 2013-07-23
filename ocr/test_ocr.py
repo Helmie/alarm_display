@@ -30,5 +30,5 @@ def test_run(resource):
     name, ext = os.path.splitext(resource)
     with open('%s.yml' % name, 'r') as f:
         expected = yaml.load(f)
-    actual = ocr.run(resource)
+    actual = ocr.run(resource, debug=True)
     assert expected == actual
