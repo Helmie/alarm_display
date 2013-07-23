@@ -1,11 +1,16 @@
 Auftragsnummer: '1593'
-Einsatzbeginn(Soll): 09.07.2013 22:12:17
-Einsatzstichwort: H:Öl-Land (Öl auf Str./Bodenfläche)
+# not perfect
+Einsatzbeginn(Soll): z 09.07.2013 22:12:17
+# not perfect
+Einsatzstichwort: H:Öl-Land (Öl auf Stn/Bodenﬂäche)
 PLZ / Ort: 16548 Glienicke (OHV)
 Region: LK Oberhavel
 Sachverhalt: Ölspur
-Segment: Schönfließer Str.
+# not perfect
+Segment: Schönﬂießer Str.
 Sondersignal: Ja
 Stadt: LK Oberhavel
-Strasse: Schönfließer Straße
-Info: in Ri.Schönfließ auf L 30
+# not perfect
+Strasse: Schönﬂießer Straße
+# not perfect
+Info: in RLSchönﬂieß auf L 30

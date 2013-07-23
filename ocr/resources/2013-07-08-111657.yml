@@ -1,9 +1,12 @@
 Auftragsnummer: '1580'
 Einsatzbeginn(Soll): 08.07.2013 11:16:57
-Einsatzstichwort: B:Klein (Container,Kleine Fläche)
+# not perfect
+Einsatzstichwort: B:Klein (ContainenKleine Fläche)
 PLZ / Ort: 16548 Glienicke (OHV)
 Region: LK Oberhavel
-Sachverhalt: Nachforderung Feuerwehr zur Nachkontrolle, Fernsehrer Explo. kein Feuer kein Qualm
+# TODO handle linebreaks in values
+# not perfect! (missing: Explo. kein Feuer kein Qualm)
+Sachverhalt: I Nachforderung Feuerwehr zur Nachkontrolle, Fernsehrer
 Sondersignal: Ja
 Stadt: LK Oberhavel
 Strasse / Hausnummer: Lindenstraße 17

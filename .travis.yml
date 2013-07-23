@@ -15,7 +15,7 @@ install:
     - pip install -q Django==$DJANGO --use-mirrors
     - sudo apt-get update -qq
     - sudo apt-get install -qq tesseract-ocr
-script: python manage.py test
+script: ./build.sh
 notifications:
     email:
         on_failure: change
