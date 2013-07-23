@@ -1,9 +1,44 @@
 from fuzzywuzzy.utils import make_type_consistent
 
-try:
-    from StringMatcher import StringMatcher as SequenceMatcher
-except:
-    from difflib import SequenceMatcher
+from difflib import SequenceMatcher
+
+
+def substring(longer, shorter):
+    if len(longer) is 0 or len(shorter) is 0:
+        return 0.0, None, None, None
+
+    def substrings(string):
+        for i in range(len(string)):
+            for j in range(i + 1, len(string) + 1):
+                yield string[i:j], i, j
+
+    matcher = SequenceMatcher(None, shorter)
+
+    lines = longer.splitlines()
+    bests = []
+
+    for line_number, line in enumerate(lines):
+        matches = []
+
+        for substring, start, end in substrings(line):
+            matcher.set_seq2(substring)
+            match = matcher.ratio(), substring, start
+            matches.append(match)
+
+        if matches:
+            ratio, word, start = max(matches, key=lambda (r, w, s): r)
+            best = ratio, word, line_number, start
+            bests.append(best)
+
+    if bests:
+        ratio, word, line_number, start = max(bests, key=lambda (r, w, l, s): r)
+        lines = lines[:line_number]
+        # don't forget to count newlines
+        offset = reduce(lambda count, line: count + len(line), lines, len(lines))
+
+        return ratio, word, offset + start, offset + start + len(word)
+    else:
+        return 0.0, None, None, None
 
 
 def partial(s1, s2):
