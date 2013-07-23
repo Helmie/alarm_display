@@ -9,8 +9,6 @@ import ocr
 import os
 import yaml
 
-from glob import glob
-
 
 def test_partial():
     """
@@ -24,7 +22,7 @@ def pytest_generate_tests(metafunc):
     if 'resource' in metafunc.fixturenames:
         directory = os.path.dirname(os.path.realpath(__file__))
         resources = os.path.join(directory, 'resources')
-        files = glob(os.path.join(resources, '*.tiff'))
+        files = [os.path.join(resources, f) for f in os.listdir(resources) if not f.endswith('.yml')]
         metafunc.parametrize('resource', files)
 
 
