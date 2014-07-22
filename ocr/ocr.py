@@ -10,8 +10,8 @@ keys = [
     'Sondersignal',
     'Einsatzbeginn(Soll)',
     'Auftragsnummer',
-    'Objekttyp',
     'Objekt',
+    'Objekttyp',
     'Strasse / Hausnummer',
     'Zusatz Strasse',
     'Strasse',
@@ -55,6 +55,7 @@ def run(filename, debug=False):
             if not line.strip():
                 continue
 
+            # TODO: don't use the first match, but the best
             for key in keys:
                 match, start, end = find_match(line, key)
                 if match is not None:

@@ -3,4 +3,5 @@ django-less
 fuzzywuzzy
 PIL
 PyYAML
+pysqlite
 South
