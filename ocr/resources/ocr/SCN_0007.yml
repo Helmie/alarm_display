@@ -1,0 +1,19 @@
+Auftragsnummer: '903'
+Sachverhalt: Rauch aus Mülltonne
+Einsatzbeginn(Soll): 06.05.2014 22:51:34
+# TODO
+Einsatzstichwort: 'n : B:klein (ContainenKIeine Fläche)'
+PLZ / Ort: 16548 Glienicke (OHV)
+Region: LK Oberhavel
+Strasse: Eichenallee
+# TODO
+Zusatz Strasse: Sonnenganen
+Segment: Nr. 1 bis 13
+# TODO support multiline matching
+Info: Ecke Sonnenblumenweg
+Sondersignal: Ja
+Hinweis zur Strasse: |
+                     Sperrung zwischen Schönfließer Str. und Am Feldrain verlängert
+                     bis 31.12., Anschluss Trinkwasserleitung, BL Hr. Unger 0171
+                     5891585
+

@@ -18,6 +18,8 @@ class Tesser_Invalid_Filetype(Tesser_General_Exception):
 
 
 def check_for_errors(logfile="tesseract.log"):
+    if not os.path.exists(logfile):
+        return
     inf = file(logfile)
     text = inf.read()
     inf.close()
@@ -60,11 +62,11 @@ def call_tesseract(input_filename, output_filename):
     env = os.environ.copy()
     env['TESSDATA_PREFIX'] = os.path.dirname(os.path.realpath(__file__)) + os.path.sep
 
-    with open('/dev/null', 'w') as null:
-        proc = subprocess.Popen(args, env=env, stdout=null, stderr=null)
-    retcode = proc.wait()
-    if retcode != 0:
+    try:
+        subprocess.check_output(args, stderr=subprocess.STDOUT, env=env)
+    except subprocess.CalledProcessError, e:
         check_for_errors()
+        raise Tesser_General_Exception(e.output)
 
 
 def image_to_string(im, cleanup=cleanup_scratch_flag):

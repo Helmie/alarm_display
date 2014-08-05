@@ -3,4 +3,6 @@ django-less
 fuzzywuzzy
 PIL
 PyYAML
+pysqlite
 South
+diff-match-patch

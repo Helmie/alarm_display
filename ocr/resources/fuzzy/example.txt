@@ -1,0 +1,48 @@
+IG] |mo33o5a24ss14
+
+i111
+
+Im] 03.07.2013 |ou=au ‚fpgviqzehn
+
+Integrierte Regionalleitstelle Nordost Eberswalde
+
+Telefonnummer: 03334/30480
+
+ALARMDEPESCHE >> FI.OHV.2l23-1
+
+Einsalzstiohwort : B:Klein (ContainenKleine Fläche)
+Sachverhalt I Nachforderung Feuerwehr zur Nachkontrolle, Fernsehrer
+Explo. keln Feuer keln Qualm
+
+Sondersignal : Ja
+
+Einsatzbeginmsoll): 08.07.2013 11:16:57
+
+Auftragsnummer : 1580
+
+Priorität : D
+
+Einsatzziel
+
+Strasse/ Hausnummer : Lindenstraße 17
+
+Segment : Lindenstr.
+
+PLZ / Ort : 16548 Glienicke (OHV)
+
+Stadt : LK Oberhavel
+
+Region : LK Oberhavel
+
+Info : EFH, Fechner
+
+Einsatzmittelliste
+
+EM IEK Typ S Alarm Auftrag
+FI.OHV.2/2:’»1 O_TLF 2 11:30 1580
+Rt.OHV.3/82-1 O_NEF 3 11:19 17710
+Rl.OHV.15/B3-2 O_RT\N4 11:19 17709
+FI.OHV.2/11-1 O-ELW 2 11:30 1580
+
+Druckdatum : 08.07.2013 11:30:26
+
