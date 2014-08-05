@@ -1,83 +1,61 @@
-[
-    {
-        "name": "Einsatzstichwort"
+{
+    "Einsatzstichwort": {
     },
-    {
-        "name": "Sachverhalt"
+    "Sachverhalt": {
     },
-    {
-        "name": "Sondersignal"
+    "Sondersignal": {
     },
-    {
-        "name": "Einsatzbeginn(Soll)"
+    "Einsatzbeginn(Soll)": {
     },
-    {
-        "name": "Auftragsnummer"
+    "Auftragsnummer": {
     },
-    {
-        "name": "Priorität",
+    "Priorität": {
         "ignore": true
     },
-    {
-        "name": "Einsatzziel",
+    "Einsatzziel": {
         "ignore": true
     },
-    {
-        "name": "Objekt"
+    "Objekt": {
     },
-    {
-        "name": "Objekttyp",
+    "Objekttyp": {
         "exclude": [
             "Objekt"
         ]
     },
-    {
-        "name": "Strasse / Hausnummer"
+    "Strasse / Hausnummer": {
     },
-    {
-        "name": "Zusatz Strasse"
+    "Zusatz Strasse": {
     },
-    {
-        "name": "Strasse"
+    "Strasse": {
     },
-    {
-        "name": "Segment"
+    "Segment": {
     },
-    {
-        "name": "PLZ / Ort",
+    "PLZ / Ort": {
         "threshold": 0.5
     },
-    {
-        "name": "Stadt"
+    "Stadt": {
     },
-    {
-        "name": "Region"
+    "Region": {
     },
-    {
-        "name": "Info"
+    "Info": {
     },
-    {
-        "name": "Telefon"
+    "Telefon": {
     },
-    {
-        "name": "Hinweis zur Strasse",
+    "Hinweis zur Strasse": {
         "exclude": [
             "Hinweis zum Ort"
         ]
     },
-    {
-        "name": "Hinweis zum Ort",
+    "Hinweis zum Ort": {
         "exclude": [
             "Hinweis zur Strasse"
         ]
     },
-    {
-        "name": "Zusatztext zur Strasse",
+    "Zusatztext zur Strasse": {
         "exclude": [
             "Zusatz Strasse"
         ]
     },
-    {
-        "name": "Erreichbarkeiten für das Einsatzziel"
+    "Erreichbarkeiten für das Einsatzziel": {
     }
-]
+}

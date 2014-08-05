@@ -17,7 +17,8 @@ def peek(some_iterable, window=1):
 def run(filename, debug=False):
     content = pytesser.image_file_to_string(filename)
 
-    def find_match(text, pattern, minimum=0.7):
+    def find_match(text, pattern, minimum=None):
+        minimum = minimum if minimum else 0.7
         score, match, start, end = fuzzy.bitap(text, pattern)
 
         if not match or score <= minimum:
@@ -30,7 +31,7 @@ def run(filename, debug=False):
     _, alarm, _, end = find_match(content, 'ALARMDEPESCHE')
 
     keys = json.loads(file('ocr/keywords.json').read())
-    keys = sorted(keys, key=lambda k: len(k['name']), reverse=True)
+    keys = dict(sorted(keys.items(), key=lambda (n, _): len(n), reverse=True))
 
     if alarm is not None:
         content = content[end:]
@@ -43,14 +44,14 @@ def run(filename, debug=False):
 
         original = content
 
-        for key in keys:
-            name = key['name']
-            score, match, start, end = find_match(content, name)
+        for name, key in keys.items():
+            threshold = key.get('threshold')
+            score, match, start, end = find_match(content, name, threshold)
 
             if match:
                 skip = False
                 for exclude in key.get('exclude', []):
-                    alt, _, _, _ = find_match(match, exclude) # should honor the threshold of the exclude
+                    alt, _, _, _ = find_match(match, exclude, keys[exclude].get('threshold'))
                     if alt > score:
                         skip = True
 
@@ -67,20 +68,25 @@ def run(filename, debug=False):
 
                     content = content[:start] + re.sub(r'[^\n]', ' ', match) + content[end:]
 
-        matched = filter(lambda k: k.get('match') is not None, keys)
-        tokens = sorted(matched, key=lambda k: k['start'])
+        tokens = sorted(filter(lambda (_, k): k.get('match') is not None, keys.items()),
+                        key=lambda (_, k): k['start'])
 
-        for token, next_token in peek(tokens):
-            end = len(original) if next_token is None else next_token['start']
+        for current, next in peek(tokens):
+            _, token = current
+            if next:
+                _, next_token = next
+                end = next_token['start']
+            else:
+                end = len(original)
             token['content'] = re.sub(r'^[ .:‘]+', '', original[token['end']:end].strip()).strip()
 
-        tokens = filter(lambda k: not k.get('ignore', False), tokens)
+        tokens = filter(lambda (_, k): not k.get('ignore', False), tokens)
 
         if debug:
             import pprint
 
             pprint.PrettyPrinter(indent=4).pprint(tokens)
 
-        return {token['name']: token['content'] for token in tokens}
+        return {name: token['content'] for name, token in tokens}
 
     return []
