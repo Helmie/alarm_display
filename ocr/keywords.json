@@ -1,0 +1,83 @@
+[
+    {
+        "name": "Einsatzstichwort"
+    },
+    {
+        "name": "Sachverhalt"
+    },
+    {
+        "name": "Sondersignal"
+    },
+    {
+        "name": "Einsatzbeginn(Soll)"
+    },
+    {
+        "name": "Auftragsnummer"
+    },
+    {
+        "name": "Priorität",
+        "ignore": true
+    },
+    {
+        "name": "Einsatzziel",
+        "ignore": true
+    },
+    {
+        "name": "Objekt"
+    },
+    {
+        "name": "Objekttyp",
+        "exclude": [
+            "Objekt"
+        ]
+    },
+    {
+        "name": "Strasse / Hausnummer"
+    },
+    {
+        "name": "Zusatz Strasse"
+    },
+    {
+        "name": "Strasse"
+    },
+    {
+        "name": "Segment"
+    },
+    {
+        "name": "PLZ / Ort",
+        "threshold": 0.5
+    },
+    {
+        "name": "Stadt"
+    },
+    {
+        "name": "Region"
+    },
+    {
+        "name": "Info"
+    },
+    {
+        "name": "Telefon"
+    },
+    {
+        "name": "Hinweis zur Strasse",
+        "exclude": [
+            "Hinweis zum Ort"
+        ]
+    },
+    {
+        "name": "Hinweis zum Ort",
+        "exclude": [
+            "Hinweis zur Strasse"
+        ]
+    },
+    {
+        "name": "Zusatztext zur Strasse",
+        "exclude": [
+            "Zusatz Strasse"
+        ]
+    },
+    {
+        "name": "Erreichbarkeiten für das Einsatzziel"
+    }
+]
