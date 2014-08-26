@@ -1,11 +1,13 @@
 {
     "Einsatzstichwort": {
-    },
-    "Sachverhalt": {
+        "singleLine": true,
         "include": [
             "H:Klein (Kleiner Umfang/Tierrettung)",
             "B:Gebäude2 (Große Gebäude,Keller,Dachstuhl)"
         ]
+    },
+    "Sachverhalt": {
+        "previousLine": true
     },
     "Sondersignal": {
     },

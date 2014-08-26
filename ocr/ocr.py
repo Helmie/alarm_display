@@ -72,21 +72,39 @@ def run(filename, debug=False):
         tokens = sorted(filter(lambda (_, k): k.get('match') is not None, keys.items()),
                         key=lambda (_, k): k['start'])
 
+        previous = None
         for current, next in peek(tokens):
             _, token = current
+
+            start = token['end']
+
             if next:
                 _, next_token = next
                 end = next_token['start']
             else:
                 end = len(original)
 
-            s = re.sub(r'^[ .:‘]+', '', original[token['end']:end].strip()).strip()
+            def trim(s):
+                return re.sub(r'^[ .:‘]+', '', s.strip()).strip()
 
-            if token.get('table', False):
+            s = trim(original[start:end])
+
+            if previous and token.get('previousLine', False):
+                _, previous_token = previous
+                previous_content = previous_token['content']
+                original_find = original.find(previous_content) + len(previous_content)
+                s = trim(original[original_find:token['start']]) + s
+
+            if token.get('singleLine', False):
+                rows = s.splitlines()
+                token['content'] = rows[0]
+            elif token.get('table', False):
                 rows = filter(None, s.splitlines())
                 token['content'] = filter(None, [group(re.search(r'^(.{10,}?) ?', row)) for row in rows[1:]])
             else:
                 token['content'] = s
+
+            previous = current
 
         tokens = filter(lambda (_, k): not k.get('ignore', False), tokens)
 
