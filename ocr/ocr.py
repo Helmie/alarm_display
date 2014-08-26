@@ -14,6 +14,10 @@ def peek(some_iterable, window=1):
     return izip_longest(items, nexts)
 
 
+def group(match):
+    '' if match is None else match.group(0).strip()
+
+
 def run(filename, debug=False):
     content = pytesser.image_file_to_string(filename)
 
@@ -35,9 +39,6 @@ def run(filename, debug=False):
 
     if alarm is not None:
         content = content[end:]
-
-        _, engines, start, _ = find_match(content, 'Einsatzmittelliste')
-        content = content[:start]
 
         if debug:
             print content
@@ -78,7 +79,14 @@ def run(filename, debug=False):
                 end = next_token['start']
             else:
                 end = len(original)
-            token['content'] = re.sub(r'^[ .:‘]+', '', original[token['end']:end].strip()).strip()
+
+            s = re.sub(r'^[ .:‘]+', '', original[token['end']:end].strip()).strip()
+
+            if token.get('table', False):
+                rows = filter(None, s.splitlines())
+                token['content'] = filter(None, [group(re.search(r'^(.{10,}?) ?', row)) for row in rows[1:]])
+            else:
+                token['content'] = s
 
         tokens = filter(lambda (_, k): not k.get('ignore', False), tokens)
 

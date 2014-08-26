@@ -14,6 +14,17 @@ def pytest_generate_tests(metafunc):
         metafunc.parametrize('filename', files)
 
 
+def t(actual_key, actual_text, expected_text, minimum_ratio=.8):
+    if expected_text == '' and actual_text == '':
+        return
+
+    ratio, word, start, end = fuzzy.bitap(expected_text, actual_text)
+
+    if ratio < minimum_ratio:
+        raise AssertionError("Expected to match %s '%s', but found '%s' (scored: %d)" %
+                             (actual_key, expected_text, actual_text, ratio))
+
+
 def test_run(filename):
     directory = os.path.dirname(os.path.realpath(__file__))
     resource = os.path.join(directory, 'resources', 'ocr', filename)
@@ -33,11 +44,8 @@ def test_run(filename):
     for actual_key, actual_text in actual.iteritems():
         expected_text = expected[actual_key]
 
-        if expected_text == '' and actual_text == '':
-            continue
-
-        ratio, word, start, end = fuzzy.bitap(expected_text, actual_text)
-
-        if ratio < .80:
-            raise AssertionError("Expected to match %s '%s', but found '%s' (scored: %d)" % 
-                                 (actual_key, expected_text, actual_text, ratio))
+        if isinstance(expected_text, list):
+            for expected_element, actual_element in zip(expected_text, actual_text):
+                t(actual_key, actual_element, expected_element, minimum_ratio=.65)
+        else:
+            t(actual_key, actual_text, expected_text)

@@ -61,5 +61,14 @@
         ]
     },
     "Erreichbarkeiten für das Einsatzziel": {
+    },
+    "Einsatzmittelliste": {
+        "table": true
+    },
+    "GMA": {
+        "ignore": true
+    },
+    "Druckdatum": {
+        "ignore": true
     }
 }
