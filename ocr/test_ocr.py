@@ -3,19 +3,41 @@
 import ocr
 import os
 import yaml
+import fuzzy
 
 
 def pytest_generate_tests(metafunc):
-    if 'resource' in metafunc.fixturenames:
+    if 'filename' in metafunc.fixturenames:
         directory = os.path.dirname(os.path.realpath(__file__))
         resources = os.path.join(directory, 'resources', 'ocr')
-        files = [os.path.join(resources, f) for f in os.listdir(resources) if not f.endswith('.yml')]
-        metafunc.parametrize('resource', files)
+        files = [f for f in os.listdir(resources) if not f.endswith('.yml')]
+        metafunc.parametrize('filename', files)
 
 
-def test_run(resource):
+def test_run(filename):
+    directory = os.path.dirname(os.path.realpath(__file__))
+    resource = os.path.join(directory, 'resources', 'ocr', filename)
     name, ext = os.path.splitext(resource)
     with open('%s.yml' % name, 'r') as f:
         expected = yaml.load(f)
     actual = ocr.run(resource, debug=True)
-    assert expected == actual
+
+    for actual_key in actual.keys():
+        if not actual_key in expected:
+            raise AssertionError("Found '%s' but didn't expect" % (actual_key,))
+
+    for expected_key in expected.keys():
+        if not expected_key in actual:
+            raise AssertionError("Expected '%s' but didn't find" % (expected_key,))
+
+    for actual_key, actual_text in actual.iteritems():
+        expected_text = expected[actual_key]
+
+        if expected_text == '' and actual_text == '':
+            continue
+
+        ratio, word, start, end = fuzzy.bitap(expected_text, actual_text)
+
+        if ratio < .80:
+            raise AssertionError("Expected to match %s '%s', but found '%s' (scored: %d)" % 
+                                 (actual_key, expected_text, actual_text, ratio))
