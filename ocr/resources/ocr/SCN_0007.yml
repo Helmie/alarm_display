@@ -1,15 +1,12 @@
 Auftragsnummer: '903'
 Sachverhalt: Rauch aus Mülltonne
 Einsatzbeginn(Soll): 06.05.2014 22:51:34
-# TODO
-Einsatzstichwort: 'n : B:klein (ContainenKIeine Fläche)'
+Einsatzstichwort: 'B:klein (Container,Kleine Fläche)'
 PLZ / Ort: 16548 Glienicke (OHV)
 Region: LK Oberhavel
 Strasse: Eichenallee
-# TODO
-Zusatz Strasse: Sonnenganen
+Zusatz Strasse: Sonnengarten
 Segment: Nr. 1 bis 13
-# TODO support multiline matching
 Info: Ecke Sonnenblumenweg
 Sondersignal: Ja
 Hinweis zur Strasse: |
