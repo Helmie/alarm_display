@@ -2,79 +2,45 @@
 
 {% block content %}
 
-    <div class="row">
-        <div class="span5">
-            <p class="lead">
-                Lorem ipsum dolor sit amet, consectetuer
-            </p>
-
-            <address class="segment clearfix">
-                <i class="icon-fire icon-2x text-error"></i>
-
-                <p>
-                    <strong>Schönborn</strong><br/>
-                    Fichtestr. 16<br/>
-                    16548 Glienicke/Nordbahn<br/>
-                    033056/81493
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <p class="lead">
+                    Lorem ipsum dolor sit amet, consectetuer
                 </p>
-            </address>
 
-            <div class="segment segment-error clearfix">
-                <i class="icon-sun icon-2x pull-left"></i>
+                <address class="segment clearfix">
+                    <i class="fa fa-fire fa-2x text-error"></i>
 
-                <p>
-                    <strong>Temperatur</strong><br/>
-                    28.5 °C
-                </p>
+                    <p>
+                        <strong>Schönborn</strong><br/>
+                        Fichtestr. 16<br/>
+                        16548 Glienicke/Nordbahn<br/>
+                        033056/81493
+                    </p>
+                </address>
+
+                <div class="segment clearfix">
+                    <i class="fa fa-compass fa-2x pull-left"></i>
+
+                    <p>
+                        <strong>Wind</strong><br/>
+                        Stärke 3<br/>
+                        Richgung Osten
+                    </p>
+                </div>
+
             </div>
 
-            <div class="segment clearfix">
-                <i class="icon-compass icon-2x pull-left"></i>
+            <div class="col-md-7">
+                <div id="map"></div>
 
-                <p>
-                    <strong>Wind</strong><br/>
-                    Stärke 3<br/>
-                    Richgung Osten
-                </p>
+                <ul class="list-inline">
+                    <li class="text-error"><i class="fa fa-truck fa-2x"></i> ELW 2/11-1</li>
+                    <li class="text-error"><i class="fa fa-truck fa-2x"></i> ELW 2/11-2</li>
+                    <li class="muted"><i class="fa fa-truck fa-2x"></i> DL 2/11-1</li>
+                </ul>
             </div>
-
-            <div class="segment clearfix">
-                <i class="icon-cloud icon-2x pull-left"></i>
-
-                <p>
-                    <strong>Wolken</strong><br/>
-                    12%
-                </p>
-            </div>
-
-            <div class="segment segment-success clearfix">
-                <i class="icon-umbrella icon-2x pull-left"></i>
-
-                <p>
-                    <strong>Regenwahrscheinlichkeit</strong><br/>
-                    95%
-                </p>
-            </div>
-
-            <div class="segment segment-warning clearfix">
-                <i class="icon-tint icon-2x pull-left"></i>
-
-                <p>
-                    <strong>Luftfeuchtigkeit</strong><br/>
-                    0%
-                </p>
-            </div>
-
-        </div>
-
-        <div class="span7">
-            <div id="map"></div>
-            
-            <ul class="inline">
-                <li class="text-error"><i class="icon-truck icon-2x"></i> ELW 2/11-1</li>
-                <li class="text-error"><i class="icon-truck icon-2x"></i> ELW 2/11-2</li>
-                <li class="muted"><i class="icon-truck icon-2x"></i> DL 2/11-1</li>
-            </ul>
         </div>
     </div>
 

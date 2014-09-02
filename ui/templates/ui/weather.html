@@ -1,0 +1,62 @@
+{% extends "ui/base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="segment segment-error clearfix">
+                    <i class="fa fa-sun-o fa-2x pull-left"></i>
+
+                    <p>
+                        <strong>Temperatur</strong><br/>
+                        28.5 °C
+                    </p>
+                </div>
+
+                <div class="segment clearfix">
+                    <i class="fa fa-compass fa-2x pull-left"></i>
+
+                    <p>
+                        <strong>Wind</strong><br/>
+                        Stärke 3<br/>
+                        Richgung Osten
+                    </p>
+                </div>
+
+                <div class="segment clearfix">
+                    <i class="fa fa-cloud fa-2x pull-left"></i>
+
+                    <p>
+                        <strong>Wolken</strong><br/>
+                        12%
+                    </p>
+                </div>
+
+                <div class="segment segment-success clearfix">
+                    <i class="fa fa-umbrella fa-2x pull-left"></i>
+
+                    <p>
+                        <strong>Regenwahrscheinlichkeit</strong><br/>
+                        95%
+                    </p>
+                </div>
+
+                <div class="segment segment-warning clearfix">
+                    <i class="fa fa-tint fa-2x pull-left"></i>
+
+                    <p>
+                        <strong>Luftfeuchtigkeit</strong><br/>
+                        0%
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="col-md-7">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

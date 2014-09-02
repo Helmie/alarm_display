@@ -1,69 +1,42 @@
+@import "bootstrap/bootstrap";
 
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
-@import "bootstrap/reset";
-@import "bootstrap/scaffolding";
-@import "bootstrap/grid";
-@import "bootstrap/layouts";
-@import "bootstrap/type";
-@import "bootstrap/code";
-@import "bootstrap/forms";
-@import "bootstrap/tables";
-//@import "bootstrap/sprites";
-@import "bootstrap/dropdowns";
-@import "bootstrap/wells";
-@import "bootstrap/component-animations";
-@import "bootstrap/close";
-@import "bootstrap/buttons";
-@import "bootstrap/button-groups";
-@import "bootstrap/alerts";
-@import "bootstrap/navs";
-@import "bootstrap/navbar";
-@import "bootstrap/breadcrumbs";
-@import "bootstrap/pagination";
-@import "bootstrap/pager";
-@import "bootstrap/modals";
-@import "bootstrap/tooltip";
-@import "bootstrap/popovers";
-@import "bootstrap/thumbnails";
-@import "bootstrap/media";
-@import "bootstrap/labels-badges";
-@import "bootstrap/progress-bars";
-@import "bootstrap/accordion";
-@import "bootstrap/carousel";
-@import "bootstrap/hero-unit";
-@import "bootstrap/utilities";
-
-@import "bootstrap/responsive";
+body {
+  padding-top: 70px;
+}
 
 #map {
-    height: 500px;
-    margin-bottom: 10px;
+  height: 500px;
+  margin-bottom: 10px;
+}
+
+.navbar .navbar-nav > li > a:hover {
+  color: @navbar-default-link-active-color;
+  background-color: @navbar-default-link-active-bg;
 }
 
 .segment {
-    .well;
+  .well;
 }
 
 .segment-success {
-    .text-success;
-    background-color: @successBackground;
+  .text-success;
+  background-color: @alert-success-bg;
 }
 
 .segment-warning {
-    .text-warning;
-    background-color: @warningBackground;
+  .text-warning;
+  background-color: @alert-warning-bg;
 }
 
 .segment-error {
-    .text-error;
-    background-color: @errorBackground;
+  .text-danger;
+  background-color: @alert-danger-bg;
 }
 
-.segment i[class^="icon"] {
-    .pull-left;
+.segment i[class^="fa"] {
+  .pull-left;
 }
 
 .segment p {
-    margin: 0 0 0 46px;
+  margin: 0 0 0 46px;
 }
