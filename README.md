@@ -25,6 +25,11 @@ To install all required dependencies on a unix-like system run:
 Dev-setup installs homebrew, nodejs, npm, tesseract, lessc, all required python libraries,
 initializes the database, if needed, and applies pending schema migrations.
 
+## Run
+
+    python manage.py celeryd
+    python manage.py celerybeat
+    python manage.py runserver
 
 ## Attributions/Links
 The Fire engine Icon by [Aha-Soft](http://www.iconarchive.com/show/transport-for-vista-icons-by-aha-soft/fire-engine-icon.html) is *Free for non-commercial use.*

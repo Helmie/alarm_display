@@ -6,3 +6,7 @@ PyYAML
 pysqlite
 South
 diff-match-patch
+reportlab
+celery
+django-activelink
+django-celery

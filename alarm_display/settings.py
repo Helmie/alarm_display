@@ -1,5 +1,7 @@
 # Django settings for alarm_display project.
 
+from datetime import timedelta
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -115,6 +117,17 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    'django.core.context_processors.request'
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,6 +141,9 @@ INSTALLED_APPS = (
     'less',
     'bootstrap_toolkit',
     'south',
+    'activelink',
+    'djcelery',
+    'kombu.transport.django',
     # custom
     'fs',
     'model',
@@ -163,3 +179,11 @@ LOGGING = {
         },
     }
 }
+
+BROKER_URL = 'django://'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'
+CELERY_BEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
